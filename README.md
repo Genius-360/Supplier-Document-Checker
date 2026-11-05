@@ -56,14 +56,14 @@ branches are safety exits to a person.
 
 | Step | What happens | Done by |
 |---|---|---|
-| 1 ingest | Reads the PDF text. A scan or corrupt file goes to a person (no OCR yet). | code |
-| 2 extract | Copies supplier, item, quantity, price and terms into a fixed schema, each with an exact quote. | LLM, or the rule-based parser |
-| 3 verify | Accepts a value only if its quote really is in the document, the value is in the quote, and it agrees with an independent rule-based parse. A claim that something is *missing* (no TIN, no penalty clause) is accepted only if a full-text scan agrees. Anything else becomes `unknown`. | code |
-| 4 match | Finds the purchase-request line; computes quantity and price differences. | code |
-| 5 check rules | Applies each rule in `rules.yaml`. Result is `pass`, `fail` or `unknown`. | code |
-| 6 decide | A failed reject rule means Reject. Otherwise any failed or unknown rule means Needs a person. Otherwise Approve. | code |
-| 7 human review | Only for "Needs a person". The run really pauses (LangGraph `interrupt`) until someone answers. | person |
-| 8 finalize | Writes the audit record: verdict, reasons, quotes, every check, every step. | code |
+| 1. ingest | Reads the PDF text. A scan or corrupt file goes to a person (no OCR yet). | code |
+| 2. extract | Copies supplier, item, quantity, price and terms into a fixed schema, each with an exact quote. | LLM, or the rule-based parser |
+| 3. verify | Accepts a value only if its quote really is in the document, the value is in the quote, and it agrees with an independent rule-based parse. A claim that something is *missing* (no TIN, no penalty clause) is accepted only if a full-text scan agrees. Anything else becomes `unknown`. | code |
+| 4. match | Finds the purchase-request line; computes quantity and price differences. | code |
+| 5. check rules | Applies each rule in `rules.yaml`. Result is `pass`, `fail` or `unknown`. | code |
+| 6. decide | A failed reject rule means Reject. Otherwise any failed or unknown rule means Needs a person. Otherwise Approve. | code |
+| 7. human review | Only for "Needs a person". The run really pauses (LangGraph `interrupt`) until someone answers. | person |
+| 8. finalize | Writes the audit record: verdict, reasons, quotes, every check, every step. | code |
 
 ### What this guarantees, and the tests that prove it
 
