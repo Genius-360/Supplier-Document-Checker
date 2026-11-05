@@ -42,7 +42,8 @@ the answer. Built for the BIAI AI Engineer Round 2 (Task 1, Aamar Garments Ltd).
 matrix is fully on the diagonal (2 Approve, 5 Reject, 3 Needs a person); see `results/regex/summary.md`.
 All ten documents take about a second.
 
-**Gemini extractor (LLM + cross-check):** [[FILL IN after you run it: x / 10, and anything it got wrong]]
+**Gemini extractor (LLM + cross-check):** [[Verdict correct: 10 of 10. Verdict and exact set of failed rules both correct: 10 of 10.
+]]
 (results are written to `results/llm/`).
 
 > **Honest caveat.** I built and tuned this on these same ten files, so 10 / 10 shows it handles *these* documents,
@@ -104,9 +105,9 @@ python -m supplier_check --extractor llm                     # Gemini (needs a k
 
 The offline parser needs nothing. To let Gemini read the documents instead (and be cross-checked by the parser):
 
-1. Copy `.env.example` to a new file named exactly `.env` (`copy .env.example .env` on Windows).
+1. Copy `env.example` to a new file named exactly `.env` (`copy env.example -> .env` on Windows).
 2. Open `.env` and put your key after `GEMINI_API_KEY=`: no quotes, no spaces around `=`.
-   Never put your key in `.env.example`; that file is committed to GitHub, `.env` is not.
+   Never put your key in `env.example`; that file is committed to GitHub, `.env` is not.
 3. Run `python -m supplier_check --extractor llm`. Results go to `results/llm/`.
 4. Every model answer is saved in `cache/llm/`. **Commit that folder**: anyone can then reproduce your Gemini run
    offline with no key. Add `--refresh` to ignore the cache.
