@@ -42,8 +42,8 @@ the answer. Built for the BIAI AI Engineer Round 2 (Task 1, Aamar Garments Ltd).
 matrix is fully on the diagonal (2 Approve, 5 Reject, 3 Needs a person); see `results/regex/summary.md`.
 All ten documents take about a second.
 
-**Gemini extractor (LLM + cross-check):** [[Verdict correct: 10 of 10. Verdict and exact set of failed rules both correct: 10 of 10.
-]]
+**Gemini extractor (LLM + cross-check):** Verdict correct: 10 of 10. Verdict and exact set of failed rules both correct: 10 of 10.
+
 (results are written to `results/llm/`).
 
 > **Honest caveat.** I built and tuned this on these same ten files, so 10 / 10 shows it handles *these* documents,
