@@ -4,14 +4,14 @@
 For every PDF it answers **Approve**, **Reject** or **Needs a person to check**, and quotes the exact text behind
 the answer. Built for the BIAI AI Engineer Round 2 (Task 1, Aamar Garments Ltd).
 
-### At a glance
-
-- **Safe by design.** The AI only *copies facts* out of a document. Every judgement is made by plain code reading
-  `rules.yaml`, and every copied fact must be proven against the document text.
-- **No silent mistakes.** A wrong AI answer can cause, at worst, "Needs a person". Never a silent Approve or a
-  false Reject.
-- **Easy to run.** Works fully offline with no API key. The Gemini extractor is optional.
-- **Result.** 10 / 10 on the sample packs with the offline parser, backed by 88 automated tests.
+> ### At a glance
+> 
+> - **Safe by design.** The AI only *copies facts* out of a document. Every judgement is made by plain code reading
+>   `rules.yaml`, and every copied fact must be proven against the document text.
+> - **No silent mistakes.** A wrong AI answer can cause, at worst, "Needs a person". Never a silent Approve or a
+>   false Reject.
+> - **Easy to run.** Works fully offline with no API key. The Gemini extractor is optional.
+> - **Result.** 10 / 10 on the sample packs with the offline parser, backed by 88 automated tests.
 
 ### Contents
 
@@ -134,14 +134,14 @@ want the Gemini extractor; the app works without it.
 
 ```mermaid
 flowchart LR
-    A[PDF] --> B[1 ingest]
-    B --> C["2 extract<br/>LLM or rule-based parser"]
-    C --> D["3 verify<br/>every quote must be in the text"]
-    D --> E["4 match<br/>vs purchase request"]
-    E --> F["5 check rules<br/>from rules.yaml"]
-    F --> G[6 decide]
-    G -->|Approve or Reject| I[8 finalize]
-    G -->|Needs a person| H["7 human review<br/>run pauses here"]
+    A[PDF] --> B[1. ingest]
+    B --> C["2. extract<br/>LLM or rule-based parser"]
+    C --> D["3. verify<br/>every quote must be in the text"]
+    D --> E["4. match<br/>vs purchase request"]
+    E --> F["5. check rules<br/>from rules.yaml"]
+    F --> G[6. decide]
+    G -->|Approve or Reject| I[8. finalize]
+    G -->|Needs a person| H["7. human review<br/>run pauses here"]
     H --> I
     B -. "unreadable file" .-> G
     C -. "extraction failed" .-> G
