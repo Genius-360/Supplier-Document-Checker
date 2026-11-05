@@ -157,20 +157,22 @@ a test or by the committed results.
 
 ## Project layout
 
+```text
+.
+├── data/                      # Sample packs, purchase request, hand-labelled ground_truth.json
+├── docs/                      # One-page note, Loom script, cheat-sheet for the live call
+├── results/
+│   └── regex/                 # Output of the offline run (summary.md + JSON audit records)
+├── supplier_check/
+│   ├── steps/                 # Pipeline steps (ingest, extract, verify, match, rules, etc.)
+│   ├── fields.py              # Schema definitions driving the LLM prompt and checks
+│   ├── graph.py               # The core LangGraph pipeline definition (start here)
+│   └── llm.py                 # Gemini client wrapper with on-disk caching
+├── app.py                     # Interactive Streamlit web demonstration app
+├── rules.yaml                 # Company compliance rules managed entirely as data
+└── tests/                     # 85 automated tests (samples, mutations, lying model, human pauses)
 ```
-rules.yaml                     company rules as data
-app.py                         Streamlit demo
-supplier_check/
-  graph.py                     the LangGraph pipeline (start here)
-  steps/                       one file per step: ingest, extract (+ regex_extractor), verify,
-                               match, rules, decide, human_review, finalize
-  llm.py                       Gemini client + on-disk cache
-  fields.py                    the fields we read (drives the LLM prompt and the checks)
-data/                          sample packs, purchase request, hand-labelled ground_truth.json
-tests/                         85 tests: samples, boundaries, mutations, lying model, human pause, rules, app
-results/regex/                 output of the offline run (summary.md + one JSON audit record per document)
-docs/                          one-page note, Loom script, cheat-sheet for the live call
-```
+
 
 ## Troubleshooting
 
