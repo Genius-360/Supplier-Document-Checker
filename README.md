@@ -38,14 +38,14 @@ Runs in about a second for all ten documents.
 
 ```mermaid
 flowchart LR
-    A[PDF] --> B[1 ingest]
-    B --> C["2 extract<br/>LLM or rule-based parser"]
-    C --> D["3 verify<br/>every quote must be in the text"]
-    D --> E["4 match<br/>vs purchase request"]
-    E --> F["5 check rules<br/>from rules.yaml"]
-    F --> G[6 decide]
-    G -->|Approve or Reject| I[8 finalize]
-    G -->|Needs a person| H["7 human review<br/>run pauses here"]
+    A[PDF] --> B[1. ingest]
+    B --> C["2. extract<br/>LLM or rule-based parser"]
+    C --> D["3. verify<br/>every quote must be in the text"]
+    D --> E["4. match<br/>vs purchase request"]
+    E --> F["5. check rules<br/>from rules.yaml"]
+    F --> G[6. decide]
+    G -->|Approve or Reject| I[8. finalize]
+    G -->|Needs a person| H["7. human review<br/>run pauses here"]
     H --> I
     B -. "unreadable file" .-> G
     C -. "extraction failed" .-> G
