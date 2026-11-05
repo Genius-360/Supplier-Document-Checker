@@ -43,8 +43,8 @@ matrix is fully on the diagonal (2 Approve, 5 Reject, 3 Needs a person); see `re
 All ten documents take about a second.
 
 **Gemini extractor (LLM + cross-check):** Verdict correct: 10 of 10. Verdict and exact set of failed rules both correct: 10 of 10.
-
 (results are written to `results/llm/`).
+
 
 > **Honest caveat.** I built and tuned this on these same ten files, so 10 / 10 shows it handles *these* documents,
 > not that it handles every layout. That is why the test suite changes one thing at a time (exact boundaries, odd
