@@ -1,0 +1,181 @@
+{
+  "extractor": "regex",
+  "confusion_matrix": {
+    "Approve": {
+      "Approve": 2,
+      "Reject": 0,
+      "Needs a person to check": 0
+    },
+    "Reject": {
+      "Approve": 0,
+      "Reject": 5,
+      "Needs a person to check": 0
+    },
+    "Needs a person to check": {
+      "Approve": 0,
+      "Reject": 0,
+      "Needs a person to check": 3
+    }
+  },
+  "documents": 10,
+  "verdict_correct": 10,
+  "verdict_and_reasons_correct": 10,
+  "rows": [
+    {
+      "doc_id": "supplier-pack-01",
+      "item": "A",
+      "verdict": "Approve",
+      "expected": "Approve",
+      "verdict_ok": true,
+      "failed_rules": [],
+      "expected_rules": [],
+      "rules_ok": true,
+      "reason": "All 13 checks passed (R1, R2, R3, R4, R5, N1, N2, N3, N4, N5, N6, N7, P1).",
+      "final_status": "Approved automatically"
+    },
+    {
+      "doc_id": "supplier-pack-02",
+      "item": "B",
+      "verdict": "Approve",
+      "expected": "Approve",
+      "verdict_ok": true,
+      "failed_rules": [],
+      "expected_rules": [],
+      "rules_ok": true,
+      "reason": "All 13 checks passed (R1, R2, R3, R4, R5, N1, N2, N3, N4, N5, N6, N7, P1).",
+      "final_status": "Approved automatically"
+    },
+    {
+      "doc_id": "supplier-pack-03",
+      "item": "C",
+      "verdict": "Reject",
+      "expected": "Reject",
+      "verdict_ok": true,
+      "failed_rules": [
+        "R1"
+      ],
+      "expected_rules": [
+        "R1"
+      ],
+      "rules_ok": true,
+      "reason": "R1: Unit price 229 is 9.05% above the maximum 210.",
+      "final_status": "Rejected automatically"
+    },
+    {
+      "doc_id": "supplier-pack-04",
+      "item": "D",
+      "verdict": "Needs a person to check",
+      "expected": "Needs a person to check",
+      "verdict_ok": true,
+      "failed_rules": [
+        "N1"
+      ],
+      "expected_rules": [
+        "N1"
+      ],
+      "rules_ok": true,
+      "reason": "N1: Unit price 6.65 is 2.31% above the maximum 6.5.",
+      "final_status": "Waiting for a person"
+    },
+    {
+      "doc_id": "supplier-pack-05",
+      "item": "E",
+      "verdict": "Reject",
+      "expected": "Reject",
+      "verdict_ok": true,
+      "failed_rules": [
+        "R2"
+      ],
+      "expected_rules": [
+        "R2"
+      ],
+      "rules_ok": true,
+      "reason": "R2: Advance payment is 40%, above the 20% limit.",
+      "final_status": "Rejected automatically"
+    },
+    {
+      "doc_id": "supplier-pack-06",
+      "item": "A",
+      "verdict": "Reject",
+      "expected": "Reject",
+      "verdict_ok": true,
+      "failed_rules": [
+        "R3"
+      ],
+      "expected_rules": [
+        "R3"
+      ],
+      "rules_ok": true,
+      "reason": "R3: There is no late-delivery penalty clause.",
+      "final_status": "Rejected automatically"
+    },
+    {
+      "doc_id": "supplier-pack-07",
+      "item": "B",
+      "verdict": "Needs a person to check",
+      "expected": "Needs a person to check",
+      "verdict_ok": true,
+      "failed_rules": [
+        "N2"
+      ],
+      "expected_rules": [
+        "N2"
+      ],
+      "rules_ok": true,
+      "reason": "N2: Quoted quantity 16,500 differs from the requested 20,000 by -17.50% (limit 5%).",
+      "final_status": "Waiting for a person"
+    },
+    {
+      "doc_id": "supplier-pack-08",
+      "item": "C",
+      "verdict": "Reject",
+      "expected": "Reject",
+      "verdict_ok": true,
+      "failed_rules": [
+        "R4"
+      ],
+      "expected_rules": [
+        "R4"
+      ],
+      "rules_ok": true,
+      "reason": "R4: Supplier TIN and BIN not shown.",
+      "final_status": "Rejected automatically"
+    },
+    {
+      "doc_id": "supplier-pack-09",
+      "item": "D",
+      "verdict": "Needs a person to check",
+      "expected": "Needs a person to check",
+      "verdict_ok": true,
+      "failed_rules": [
+        "N3",
+        "N6"
+      ],
+      "expected_rules": [
+        "N3",
+        "N6"
+      ],
+      "rules_ok": true,
+      "reason": "N3: Payment terms are unclear: a range of 30 to 90 days instead of a fixed period.",
+      "final_status": "Waiting for a person"
+    },
+    {
+      "doc_id": "supplier-pack-10",
+      "item": "E",
+      "verdict": "Reject",
+      "expected": "Reject",
+      "verdict_ok": true,
+      "failed_rules": [
+        "N5",
+        "R5"
+      ],
+      "expected_rules": [
+        "N5",
+        "R5"
+      ],
+      "rules_ok": true,
+      "reason": "R5: Delivery is promised in 60 days (more than 45 days).",
+      "final_status": "Rejected automatically"
+    }
+  ]
+}

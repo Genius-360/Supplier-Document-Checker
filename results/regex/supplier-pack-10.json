@@ -1,0 +1,410 @@
+{
+  "doc_id": "supplier-pack-10",
+  "supplier": "Kushiyara Box Industries",
+  "item": "E",
+  "system_verdict": "Reject",
+  "primary_reason": "R5: Delivery is promised in 60 days (more than 45 days).",
+  "reasons": [
+    {
+      "rule_id": "R5",
+      "status": "fail",
+      "severity": "reject",
+      "message": "Delivery is promised in 60 days (more than 45 days).",
+      "rule": "Delivery is promised later than 45 days after the purchase order.",
+      "evidence": [
+        "Delivery within 60 days of PO."
+      ]
+    },
+    {
+      "rule_id": "N5",
+      "status": "fail",
+      "severity": "needs_person",
+      "message": "VAT is included in the unit price instead of being shown separately.",
+      "rule": "VAT is not shown separately at 15%.",
+      "evidence": [
+        "Item Description Qty Unit Unit price (BDT, VAT included)Amount (BDT)"
+      ]
+    }
+  ],
+  "human": null,
+  "final_status": "Rejected automatically",
+  "failed_rules": [
+    "N5",
+    "R5"
+  ],
+  "unverified_rules": [],
+  "checks": [
+    {
+      "rule_id": "R1",
+      "status": "pass",
+      "severity": "reject",
+      "message": "Unit price 94 (VAT included) is within the maximum 95 on either VAT basis.",
+      "evidence": [
+        "E Carton box, 5-ply 3,000 piece 94.00 282,000.00",
+        "purchase-request.csv: maximum unit price 95 BDT"
+      ]
+    },
+    {
+      "rule_id": "R2",
+      "status": "pass",
+      "severity": "reject",
+      "message": "Advance payment is 10% (limit 20%).",
+      "evidence": [
+        "10% advance payable with the purchase order."
+      ]
+    },
+    {
+      "rule_id": "R3",
+      "status": "pass",
+      "severity": "reject",
+      "message": "A late-delivery penalty clause is present.",
+      "evidence": [
+        "Late delivery penalty of 0.5% of order value per week."
+      ]
+    },
+    {
+      "rule_id": "R4",
+      "status": "pass",
+      "severity": "reject",
+      "message": "Supplier TIN and BIN are both present.",
+      "evidence": [
+        "TIN: 110458103391",
+        "BIN: 001071041-0101"
+      ]
+    },
+    {
+      "rule_id": "R5",
+      "status": "fail",
+      "severity": "reject",
+      "message": "Delivery is promised in 60 days (more than 45 days).",
+      "evidence": [
+        "Delivery within 60 days of PO."
+      ]
+    },
+    {
+      "rule_id": "N1",
+      "status": "pass",
+      "severity": "needs_person",
+      "message": "Unit price 94 (VAT included) is within the maximum 95 on either VAT basis.",
+      "evidence": [
+        "E Carton box, 5-ply 3,000 piece 94.00 282,000.00",
+        "purchase-request.csv: maximum unit price 95 BDT"
+      ]
+    },
+    {
+      "rule_id": "N2",
+      "status": "pass",
+      "severity": "needs_person",
+      "message": "Quoted quantity 3,000 vs requested 3,000 (+0.00%).",
+      "evidence": [
+        "E Carton box, 5-ply 3,000 piece 94.00 282,000.00",
+        "purchase-request.csv: quantity requested 3,000"
+      ]
+    },
+    {
+      "rule_id": "N3",
+      "status": "pass",
+      "severity": "needs_person",
+      "message": "Payment is due 45 days after delivery (allowed 30 to 60).",
+      "evidence": [
+        "Payment within 45 days of delivery."
+      ]
+    },
+    {
+      "rule_id": "N4",
+      "status": "pass",
+      "severity": "needs_person",
+      "message": "Delivery is promised in 60 days.",
+      "evidence": [
+        "Delivery within 60 days of PO."
+      ]
+    },
+    {
+      "rule_id": "N5",
+      "status": "fail",
+      "severity": "needs_person",
+      "message": "VAT is included in the unit price instead of being shown separately.",
+      "evidence": [
+        "Item Description Qty Unit Unit price (BDT, VAT included)Amount (BDT)"
+      ]
+    },
+    {
+      "rule_id": "N6",
+      "status": "pass",
+      "severity": "needs_person",
+      "message": "Line amount, subtotal, VAT and total all add up.",
+      "evidence": [
+        "E Carton box, 5-ply 3,000 piece 94.00 282,000.00",
+        "Total (all taxes included) 282,000.00"
+      ]
+    },
+    {
+      "rule_id": "N7",
+      "status": "pass",
+      "severity": "needs_person",
+      "message": "The quotation is valid for 30 days (minimum 30).",
+      "evidence": [
+        "This quotation is valid for 30 days from the date above."
+      ]
+    },
+    {
+      "rule_id": "P1",
+      "status": "pass",
+      "severity": "needs_person",
+      "message": "Penalty is 0.5% of order value per week (minimum 0.5%).",
+      "evidence": [
+        "Late delivery penalty of 0.5% of order value per week."
+      ]
+    }
+  ],
+  "comparison": {
+    "matched": true,
+    "reason": null,
+    "pr_line": {
+      "pr": "PR-2026-114",
+      "item": "E",
+      "description": "Carton box, 5-ply",
+      "unit": "piece",
+      "quantity_requested": "3000",
+      "max_unit_price": "95"
+    },
+    "qty_requested": "3000",
+    "max_price": "95",
+    "qty_quoted": "3000.0",
+    "qty_diff": "0.0",
+    "qty_dev_pct": "0.0",
+    "price_quoted": "94.0",
+    "price_over_max_pct": "-1.052631578947368421052631579",
+    "price_over_max_pct_ex_vat": "-13.95881006864988558352402746"
+  },
+  "facts": {
+    "supplier_name": {
+      "value": "Kushiyara Box Industries",
+      "quote": "Kushiyara Box Industries",
+      "status": "ok",
+      "reason": null,
+      "source": "regex"
+    },
+    "quotation_no": {
+      "value": "QT-2026-910",
+      "quote": "Quotation no. QT-2026-910",
+      "status": "ok",
+      "reason": null,
+      "source": "regex"
+    },
+    "quotation_date": {
+      "value": "2026-10-23",
+      "quote": "Date 2026-10-23",
+      "status": "ok",
+      "reason": null,
+      "source": "regex"
+    },
+    "pr_reference": {
+      "value": "PR-2026-114",
+      "quote": "Reference PR-2026-114",
+      "status": "ok",
+      "reason": null,
+      "source": "regex"
+    },
+    "item_code": {
+      "value": "E",
+      "quote": "E Carton box, 5-ply 3,000 piece 94.00 282,000.00",
+      "status": "ok",
+      "reason": null,
+      "source": "regex"
+    },
+    "item_description": {
+      "value": "Carton box, 5-ply",
+      "quote": "E Carton box, 5-ply 3,000 piece 94.00 282,000.00",
+      "status": "ok",
+      "reason": null,
+      "source": "regex"
+    },
+    "quantity": {
+      "value": 3000.0,
+      "quote": "E Carton box, 5-ply 3,000 piece 94.00 282,000.00",
+      "status": "ok",
+      "reason": null,
+      "source": "regex"
+    },
+    "unit": {
+      "value": "piece",
+      "quote": "E Carton box, 5-ply 3,000 piece 94.00 282,000.00",
+      "status": "ok",
+      "reason": null,
+      "source": "regex"
+    },
+    "unit_price": {
+      "value": 94.0,
+      "quote": "E Carton box, 5-ply 3,000 piece 94.00 282,000.00",
+      "status": "ok",
+      "reason": null,
+      "source": "regex"
+    },
+    "line_amount": {
+      "value": 282000.0,
+      "quote": "E Carton box, 5-ply 3,000 piece 94.00 282,000.00",
+      "status": "ok",
+      "reason": null,
+      "source": "regex"
+    },
+    "subtotal": {
+      "value": null,
+      "quote": null,
+      "status": "unknown",
+      "reason": "not found in the document",
+      "source": "regex"
+    },
+    "vat_rate_pct": {
+      "value": null,
+      "quote": null,
+      "status": "unknown",
+      "reason": "not found in the document",
+      "source": "regex"
+    },
+    "vat_amount": {
+      "value": null,
+      "quote": null,
+      "status": "unknown",
+      "reason": "not found in the document",
+      "source": "regex"
+    },
+    "total": {
+      "value": 282000.0,
+      "quote": "Total (all taxes included) 282,000.00",
+      "status": "ok",
+      "reason": null,
+      "source": "regex"
+    },
+    "price_includes_vat": {
+      "value": true,
+      "quote": "Item Description Qty Unit Unit price (BDT, VAT included)Amount (BDT)",
+      "status": "ok",
+      "reason": null,
+      "source": "regex"
+    },
+    "tin": {
+      "value": "110458103391",
+      "quote": "TIN: 110458103391",
+      "status": "ok",
+      "reason": null,
+      "source": "regex"
+    },
+    "bin": {
+      "value": "001071041-0101",
+      "quote": "BIN: 001071041-0101",
+      "status": "ok",
+      "reason": null,
+      "source": "regex"
+    },
+    "advance_pct": {
+      "value": 10.0,
+      "quote": "10% advance payable with the purchase order.",
+      "status": "ok",
+      "reason": null,
+      "source": "regex"
+    },
+    "payment_days_min": {
+      "value": 45.0,
+      "quote": "Payment within 45 days of delivery.",
+      "status": "ok",
+      "reason": null,
+      "source": "regex"
+    },
+    "payment_days_max": {
+      "value": 45.0,
+      "quote": "Payment within 45 days of delivery.",
+      "status": "ok",
+      "reason": null,
+      "source": "regex"
+    },
+    "delivery_value": {
+      "value": 60.0,
+      "quote": "Delivery within 60 days of PO.",
+      "status": "ok",
+      "reason": null,
+      "source": "regex"
+    },
+    "delivery_unit": {
+      "value": "days",
+      "quote": "Delivery within 60 days of PO.",
+      "status": "ok",
+      "reason": null,
+      "source": "regex"
+    },
+    "penalty_clause_present": {
+      "value": true,
+      "quote": "Late delivery penalty of 0.5% of order value per week.",
+      "status": "ok",
+      "reason": null,
+      "source": "regex"
+    },
+    "penalty_pct": {
+      "value": 0.5,
+      "quote": "Late delivery penalty of 0.5% of order value per week.",
+      "status": "ok",
+      "reason": null,
+      "source": "regex"
+    },
+    "penalty_period": {
+      "value": "week",
+      "quote": "Late delivery penalty of 0.5% of order value per week.",
+      "status": "ok",
+      "reason": null,
+      "source": "regex"
+    },
+    "penalty_base": {
+      "value": "order_value",
+      "quote": "Late delivery penalty of 0.5% of order value per week.",
+      "status": "ok",
+      "reason": null,
+      "source": "regex"
+    },
+    "validity_days": {
+      "value": 30.0,
+      "quote": "This quotation is valid for 30 days from the date above.",
+      "status": "ok",
+      "reason": null,
+      "source": "regex"
+    }
+  },
+  "verify_issues": [],
+  "fatal_errors": [],
+  "trace": [
+    {
+      "step": "ingest",
+      "ok": true,
+      "summary": "read 936 characters of text",
+      "ms": 28
+    },
+    {
+      "step": "extract",
+      "ok": true,
+      "summary": "regex extractor: 24/27 fields found",
+      "ms": 0
+    },
+    {
+      "step": "verify",
+      "ok": false,
+      "summary": "24 fields verified against the text; 3 could not be verified (subtotal, vat_rate_pct, vat_amount)",
+      "ms": 0
+    },
+    {
+      "step": "match",
+      "ok": true,
+      "summary": "matched to PR line PR-2026-114/E: quantity +0.00% vs requested; price -1.05% vs maximum",
+      "ms": 0
+    },
+    {
+      "step": "check_rules",
+      "ok": true,
+      "summary": "13 rules checked: 11 pass, 2 fail, 0 could not be verified",
+      "ms": 0
+    },
+    {
+      "step": "decide",
+      "ok": true,
+      "summary": "Reject - R5: Delivery is promised in 60 days (more than 45 days)."
+    }
+  ]
+}

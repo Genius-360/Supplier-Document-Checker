@@ -1,0 +1,402 @@
+{
+  "doc_id": "supplier-pack-03",
+  "supplier": "Karnaphuli Yarn Traders",
+  "item": "C",
+  "system_verdict": "Reject",
+  "primary_reason": "R1: Unit price 229 is 9.05% above the maximum 210.",
+  "reasons": [
+    {
+      "rule_id": "R1",
+      "status": "fail",
+      "severity": "reject",
+      "message": "Unit price 229 is 9.05% above the maximum 210.",
+      "rule": "Unit price is more than 3% above the maximum unit price in the purchase request.",
+      "evidence": [
+        "C Polyester sewing thread, cone 800 cone 229.00 183,200.00",
+        "purchase-request.csv: maximum unit price 210 BDT"
+      ]
+    }
+  ],
+  "human": null,
+  "final_status": "Rejected automatically",
+  "failed_rules": [
+    "R1"
+  ],
+  "unverified_rules": [],
+  "checks": [
+    {
+      "rule_id": "R1",
+      "status": "fail",
+      "severity": "reject",
+      "message": "Unit price 229 is 9.05% above the maximum 210.",
+      "evidence": [
+        "C Polyester sewing thread, cone 800 cone 229.00 183,200.00",
+        "purchase-request.csv: maximum unit price 210 BDT"
+      ]
+    },
+    {
+      "rule_id": "R2",
+      "status": "pass",
+      "severity": "reject",
+      "message": "Advance payment is 15% (limit 20%).",
+      "evidence": [
+        "15% advance payable with the purchase order."
+      ]
+    },
+    {
+      "rule_id": "R3",
+      "status": "pass",
+      "severity": "reject",
+      "message": "A late-delivery penalty clause is present.",
+      "evidence": [
+        "Delay in delivery will attract a penalty of 0.5% of order value per week."
+      ]
+    },
+    {
+      "rule_id": "R4",
+      "status": "pass",
+      "severity": "reject",
+      "message": "Supplier TIN and BIN are both present.",
+      "evidence": [
+        "TIN: 103458033391",
+        "BIN: 000370341-0101"
+      ]
+    },
+    {
+      "rule_id": "R5",
+      "status": "pass",
+      "severity": "reject",
+      "message": "Delivery is promised in 20 days.",
+      "evidence": [
+        "Delivery within 20 days of PO."
+      ]
+    },
+    {
+      "rule_id": "N1",
+      "status": "pass",
+      "severity": "needs_person",
+      "message": "Unit price 229 is +9.05% vs the maximum 210.",
+      "evidence": [
+        "C Polyester sewing thread, cone 800 cone 229.00 183,200.00",
+        "purchase-request.csv: maximum unit price 210 BDT"
+      ]
+    },
+    {
+      "rule_id": "N2",
+      "status": "pass",
+      "severity": "needs_person",
+      "message": "Quoted quantity 800 vs requested 800 (+0.00%).",
+      "evidence": [
+        "C Polyester sewing thread, cone 800 cone 229.00 183,200.00",
+        "purchase-request.csv: quantity requested 800"
+      ]
+    },
+    {
+      "rule_id": "N3",
+      "status": "pass",
+      "severity": "needs_person",
+      "message": "Payment is due 40 days after delivery (allowed 30 to 60).",
+      "evidence": [
+        "Balance within 40 days of delivery."
+      ]
+    },
+    {
+      "rule_id": "N4",
+      "status": "pass",
+      "severity": "needs_person",
+      "message": "Delivery is promised in 20 days.",
+      "evidence": [
+        "Delivery within 20 days of PO."
+      ]
+    },
+    {
+      "rule_id": "N5",
+      "status": "pass",
+      "severity": "needs_person",
+      "message": "VAT is shown separately at 15%.",
+      "evidence": [
+        "VAT 15% 27,480.00"
+      ]
+    },
+    {
+      "rule_id": "N6",
+      "status": "pass",
+      "severity": "needs_person",
+      "message": "Line amount, subtotal, VAT and total all add up.",
+      "evidence": [
+        "C Polyester sewing thread, cone 800 cone 229.00 183,200.00",
+        "Subtotal 183,200.00",
+        "VAT 15% 27,480.00",
+        "Total 210,680.00"
+      ]
+    },
+    {
+      "rule_id": "N7",
+      "status": "pass",
+      "severity": "needs_person",
+      "message": "The quotation is valid for 30 days (minimum 30).",
+      "evidence": [
+        "This quotation is valid for 30 days from the date above."
+      ]
+    },
+    {
+      "rule_id": "P1",
+      "status": "pass",
+      "severity": "needs_person",
+      "message": "Penalty is 0.5% of order value per week (minimum 0.5%).",
+      "evidence": [
+        "Delay in delivery will attract a penalty of 0.5% of order value per week."
+      ]
+    }
+  ],
+  "comparison": {
+    "matched": true,
+    "reason": null,
+    "pr_line": {
+      "pr": "PR-2026-114",
+      "item": "C",
+      "description": "Polyester sewing thread, cone",
+      "unit": "cone",
+      "quantity_requested": "800",
+      "max_unit_price": "210"
+    },
+    "qty_requested": "800",
+    "max_price": "210",
+    "qty_quoted": "800.0",
+    "qty_diff": "0.0",
+    "qty_dev_pct": "0.0",
+    "price_quoted": "229.0",
+    "price_over_max_pct": "9.047619047619047619047619048",
+    "price_over_max_pct_ex_vat": "-5.175983436853002070393374762"
+  },
+  "facts": {
+    "supplier_name": {
+      "value": "Karnaphuli Yarn Traders",
+      "quote": "Karnaphuli Yarn Traders",
+      "status": "ok",
+      "reason": null,
+      "source": "regex"
+    },
+    "quotation_no": {
+      "value": "QT-2026-903",
+      "quote": "Quotation no. QT-2026-903",
+      "status": "ok",
+      "reason": null,
+      "source": "regex"
+    },
+    "quotation_date": {
+      "value": "2026-10-23",
+      "quote": "Date 2026-10-23",
+      "status": "ok",
+      "reason": null,
+      "source": "regex"
+    },
+    "pr_reference": {
+      "value": "PR-2026-114",
+      "quote": "Reference PR-2026-114",
+      "status": "ok",
+      "reason": null,
+      "source": "regex"
+    },
+    "item_code": {
+      "value": "C",
+      "quote": "C Polyester sewing thread, cone 800 cone 229.00 183,200.00",
+      "status": "ok",
+      "reason": null,
+      "source": "regex"
+    },
+    "item_description": {
+      "value": "Polyester sewing thread, cone",
+      "quote": "C Polyester sewing thread, cone 800 cone 229.00 183,200.00",
+      "status": "ok",
+      "reason": null,
+      "source": "regex"
+    },
+    "quantity": {
+      "value": 800.0,
+      "quote": "C Polyester sewing thread, cone 800 cone 229.00 183,200.00",
+      "status": "ok",
+      "reason": null,
+      "source": "regex"
+    },
+    "unit": {
+      "value": "cone",
+      "quote": "C Polyester sewing thread, cone 800 cone 229.00 183,200.00",
+      "status": "ok",
+      "reason": null,
+      "source": "regex"
+    },
+    "unit_price": {
+      "value": 229.0,
+      "quote": "C Polyester sewing thread, cone 800 cone 229.00 183,200.00",
+      "status": "ok",
+      "reason": null,
+      "source": "regex"
+    },
+    "line_amount": {
+      "value": 183200.0,
+      "quote": "C Polyester sewing thread, cone 800 cone 229.00 183,200.00",
+      "status": "ok",
+      "reason": null,
+      "source": "regex"
+    },
+    "subtotal": {
+      "value": 183200.0,
+      "quote": "Subtotal 183,200.00",
+      "status": "ok",
+      "reason": null,
+      "source": "regex"
+    },
+    "vat_rate_pct": {
+      "value": 15.0,
+      "quote": "VAT 15% 27,480.00",
+      "status": "ok",
+      "reason": null,
+      "source": "regex"
+    },
+    "vat_amount": {
+      "value": 27480.0,
+      "quote": "VAT 15% 27,480.00",
+      "status": "ok",
+      "reason": null,
+      "source": "regex"
+    },
+    "total": {
+      "value": 210680.0,
+      "quote": "Total 210,680.00",
+      "status": "ok",
+      "reason": null,
+      "source": "regex"
+    },
+    "price_includes_vat": {
+      "value": false,
+      "quote": null,
+      "status": "ok",
+      "reason": null,
+      "source": "regex"
+    },
+    "tin": {
+      "value": "103458033391",
+      "quote": "TIN: 103458033391",
+      "status": "ok",
+      "reason": null,
+      "source": "regex"
+    },
+    "bin": {
+      "value": "000370341-0101",
+      "quote": "BIN: 000370341-0101",
+      "status": "ok",
+      "reason": null,
+      "source": "regex"
+    },
+    "advance_pct": {
+      "value": 15.0,
+      "quote": "15% advance payable with the purchase order.",
+      "status": "ok",
+      "reason": null,
+      "source": "regex"
+    },
+    "payment_days_min": {
+      "value": 40.0,
+      "quote": "Balance within 40 days of delivery.",
+      "status": "ok",
+      "reason": null,
+      "source": "regex"
+    },
+    "payment_days_max": {
+      "value": 40.0,
+      "quote": "Balance within 40 days of delivery.",
+      "status": "ok",
+      "reason": null,
+      "source": "regex"
+    },
+    "delivery_value": {
+      "value": 20.0,
+      "quote": "Delivery within 20 days of PO.",
+      "status": "ok",
+      "reason": null,
+      "source": "regex"
+    },
+    "delivery_unit": {
+      "value": "days",
+      "quote": "Delivery within 20 days of PO.",
+      "status": "ok",
+      "reason": null,
+      "source": "regex"
+    },
+    "penalty_clause_present": {
+      "value": true,
+      "quote": "Delay in delivery will attract a penalty of 0.5% of order value per week.",
+      "status": "ok",
+      "reason": null,
+      "source": "regex"
+    },
+    "penalty_pct": {
+      "value": 0.5,
+      "quote": "Delay in delivery will attract a penalty of 0.5% of order value per week.",
+      "status": "ok",
+      "reason": null,
+      "source": "regex"
+    },
+    "penalty_period": {
+      "value": "week",
+      "quote": "Delay in delivery will attract a penalty of 0.5% of order value per week.",
+      "status": "ok",
+      "reason": null,
+      "source": "regex"
+    },
+    "penalty_base": {
+      "value": "order_value",
+      "quote": "Delay in delivery will attract a penalty of 0.5% of order value per week.",
+      "status": "ok",
+      "reason": null,
+      "source": "regex"
+    },
+    "validity_days": {
+      "value": 30.0,
+      "quote": "This quotation is valid for 30 days from the date above.",
+      "status": "ok",
+      "reason": null,
+      "source": "regex"
+    }
+  },
+  "verify_issues": [],
+  "fatal_errors": [],
+  "trace": [
+    {
+      "step": "ingest",
+      "ok": true,
+      "summary": "read 967 characters of text",
+      "ms": 64
+    },
+    {
+      "step": "extract",
+      "ok": true,
+      "summary": "regex extractor: 27/27 fields found",
+      "ms": 0
+    },
+    {
+      "step": "verify",
+      "ok": true,
+      "summary": "27 fields verified against the text",
+      "ms": 1
+    },
+    {
+      "step": "match",
+      "ok": true,
+      "summary": "matched to PR line PR-2026-114/C: quantity +0.00% vs requested; price +9.05% vs maximum",
+      "ms": 0
+    },
+    {
+      "step": "check_rules",
+      "ok": true,
+      "summary": "13 rules checked: 12 pass, 1 fail, 0 could not be verified",
+      "ms": 0
+    },
+    {
+      "step": "decide",
+      "ok": true,
+      "summary": "Reject - R1: Unit price 229 is 9.05% above the maximum 210."
+    }
+  ]
+}

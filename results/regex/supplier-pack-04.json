@@ -1,0 +1,411 @@
+{
+  "doc_id": "supplier-pack-04",
+  "supplier": "Surma Packaging Industries",
+  "item": "D",
+  "system_verdict": "Needs a person to check",
+  "primary_reason": "N1: Unit price 6.65 is 2.31% above the maximum 6.5.",
+  "reasons": [
+    {
+      "rule_id": "N1",
+      "status": "fail",
+      "severity": "needs_person",
+      "message": "Unit price 6.65 is 2.31% above the maximum 6.5.",
+      "rule": "Unit price is above the maximum, but by no more than 3%.",
+      "evidence": [
+        "D Poly bag, 30 x 40 cm 50,000 piece 6.65 332,500.00",
+        "purchase-request.csv: maximum unit price 6.5 BDT"
+      ]
+    }
+  ],
+  "human": {
+    "decision": "pending",
+    "reviewer": null,
+    "comment": "no reviewer available in this run"
+  },
+  "final_status": "Waiting for a person",
+  "failed_rules": [
+    "N1"
+  ],
+  "unverified_rules": [],
+  "checks": [
+    {
+      "rule_id": "R1",
+      "status": "pass",
+      "severity": "reject",
+      "message": "Unit price 6.65 is +2.31% vs the maximum 6.5.",
+      "evidence": [
+        "D Poly bag, 30 x 40 cm 50,000 piece 6.65 332,500.00",
+        "purchase-request.csv: maximum unit price 6.5 BDT"
+      ]
+    },
+    {
+      "rule_id": "R2",
+      "status": "pass",
+      "severity": "reject",
+      "message": "Advance payment is 10% (limit 20%).",
+      "evidence": [
+        "10% advance payable with the purchase order."
+      ]
+    },
+    {
+      "rule_id": "R3",
+      "status": "pass",
+      "severity": "reject",
+      "message": "A late-delivery penalty clause is present.",
+      "evidence": [
+        "Late delivery penalty of 0.6% of order value per week."
+      ]
+    },
+    {
+      "rule_id": "R4",
+      "status": "pass",
+      "severity": "reject",
+      "message": "Supplier TIN and BIN are both present.",
+      "evidence": [
+        "TIN: 104458043391",
+        "BIN: 000470441-0101"
+      ]
+    },
+    {
+      "rule_id": "R5",
+      "status": "pass",
+      "severity": "reject",
+      "message": "Delivery is promised in 28 days.",
+      "evidence": [
+        "Delivery within 28 days of PO."
+      ]
+    },
+    {
+      "rule_id": "N1",
+      "status": "fail",
+      "severity": "needs_person",
+      "message": "Unit price 6.65 is 2.31% above the maximum 6.5.",
+      "evidence": [
+        "D Poly bag, 30 x 40 cm 50,000 piece 6.65 332,500.00",
+        "purchase-request.csv: maximum unit price 6.5 BDT"
+      ]
+    },
+    {
+      "rule_id": "N2",
+      "status": "pass",
+      "severity": "needs_person",
+      "message": "Quoted quantity 50,000 vs requested 50,000 (+0.00%).",
+      "evidence": [
+        "D Poly bag, 30 x 40 cm 50,000 piece 6.65 332,500.00",
+        "purchase-request.csv: quantity requested 50,000"
+      ]
+    },
+    {
+      "rule_id": "N3",
+      "status": "pass",
+      "severity": "needs_person",
+      "message": "Payment is due 30 days after delivery (allowed 30 to 60).",
+      "evidence": [
+        "Payment within 30 days after delivery."
+      ]
+    },
+    {
+      "rule_id": "N4",
+      "status": "pass",
+      "severity": "needs_person",
+      "message": "Delivery is promised in 28 days.",
+      "evidence": [
+        "Delivery within 28 days of PO."
+      ]
+    },
+    {
+      "rule_id": "N5",
+      "status": "pass",
+      "severity": "needs_person",
+      "message": "VAT is shown separately at 15%.",
+      "evidence": [
+        "VAT 15% 49,875.00"
+      ]
+    },
+    {
+      "rule_id": "N6",
+      "status": "pass",
+      "severity": "needs_person",
+      "message": "Line amount, subtotal, VAT and total all add up.",
+      "evidence": [
+        "D Poly bag, 30 x 40 cm 50,000 piece 6.65 332,500.00",
+        "Subtotal 332,500.00",
+        "VAT 15% 49,875.00",
+        "Total 382,375.00"
+      ]
+    },
+    {
+      "rule_id": "N7",
+      "status": "pass",
+      "severity": "needs_person",
+      "message": "The quotation is valid for 40 days (minimum 30).",
+      "evidence": [
+        "This quotation is valid for 40 days from the date above."
+      ]
+    },
+    {
+      "rule_id": "P1",
+      "status": "pass",
+      "severity": "needs_person",
+      "message": "Penalty is 0.6% of order value per week (minimum 0.5%).",
+      "evidence": [
+        "Late delivery penalty of 0.6% of order value per week."
+      ]
+    }
+  ],
+  "comparison": {
+    "matched": true,
+    "reason": null,
+    "pr_line": {
+      "pr": "PR-2026-114",
+      "item": "D",
+      "description": "Poly bag, 30 x 40 cm",
+      "unit": "piece",
+      "quantity_requested": "50000",
+      "max_unit_price": "6.5"
+    },
+    "qty_requested": "50000",
+    "max_price": "6.5",
+    "qty_quoted": "50000.0",
+    "qty_diff": "0.0",
+    "qty_dev_pct": "0.0",
+    "price_quoted": "6.65",
+    "price_over_max_pct": "2.307692307692307692307692308",
+    "price_over_max_pct_ex_vat": "-11.03678929765886287625418060"
+  },
+  "facts": {
+    "supplier_name": {
+      "value": "Surma Packaging Industries",
+      "quote": "Surma Packaging Industries",
+      "status": "ok",
+      "reason": null,
+      "source": "regex"
+    },
+    "quotation_no": {
+      "value": "QT-2026-904",
+      "quote": "Quotation no. QT-2026-904",
+      "status": "ok",
+      "reason": null,
+      "source": "regex"
+    },
+    "quotation_date": {
+      "value": "2026-10-24",
+      "quote": "Date 2026-10-24",
+      "status": "ok",
+      "reason": null,
+      "source": "regex"
+    },
+    "pr_reference": {
+      "value": "PR-2026-114",
+      "quote": "Reference PR-2026-114",
+      "status": "ok",
+      "reason": null,
+      "source": "regex"
+    },
+    "item_code": {
+      "value": "D",
+      "quote": "D Poly bag, 30 x 40 cm 50,000 piece 6.65 332,500.00",
+      "status": "ok",
+      "reason": null,
+      "source": "regex"
+    },
+    "item_description": {
+      "value": "Poly bag, 30 x 40 cm",
+      "quote": "D Poly bag, 30 x 40 cm 50,000 piece 6.65 332,500.00",
+      "status": "ok",
+      "reason": null,
+      "source": "regex"
+    },
+    "quantity": {
+      "value": 50000.0,
+      "quote": "D Poly bag, 30 x 40 cm 50,000 piece 6.65 332,500.00",
+      "status": "ok",
+      "reason": null,
+      "source": "regex"
+    },
+    "unit": {
+      "value": "piece",
+      "quote": "D Poly bag, 30 x 40 cm 50,000 piece 6.65 332,500.00",
+      "status": "ok",
+      "reason": null,
+      "source": "regex"
+    },
+    "unit_price": {
+      "value": 6.65,
+      "quote": "D Poly bag, 30 x 40 cm 50,000 piece 6.65 332,500.00",
+      "status": "ok",
+      "reason": null,
+      "source": "regex"
+    },
+    "line_amount": {
+      "value": 332500.0,
+      "quote": "D Poly bag, 30 x 40 cm 50,000 piece 6.65 332,500.00",
+      "status": "ok",
+      "reason": null,
+      "source": "regex"
+    },
+    "subtotal": {
+      "value": 332500.0,
+      "quote": "Subtotal 332,500.00",
+      "status": "ok",
+      "reason": null,
+      "source": "regex"
+    },
+    "vat_rate_pct": {
+      "value": 15.0,
+      "quote": "VAT 15% 49,875.00",
+      "status": "ok",
+      "reason": null,
+      "source": "regex"
+    },
+    "vat_amount": {
+      "value": 49875.0,
+      "quote": "VAT 15% 49,875.00",
+      "status": "ok",
+      "reason": null,
+      "source": "regex"
+    },
+    "total": {
+      "value": 382375.0,
+      "quote": "Total 382,375.00",
+      "status": "ok",
+      "reason": null,
+      "source": "regex"
+    },
+    "price_includes_vat": {
+      "value": false,
+      "quote": null,
+      "status": "ok",
+      "reason": null,
+      "source": "regex"
+    },
+    "tin": {
+      "value": "104458043391",
+      "quote": "TIN: 104458043391",
+      "status": "ok",
+      "reason": null,
+      "source": "regex"
+    },
+    "bin": {
+      "value": "000470441-0101",
+      "quote": "BIN: 000470441-0101",
+      "status": "ok",
+      "reason": null,
+      "source": "regex"
+    },
+    "advance_pct": {
+      "value": 10.0,
+      "quote": "10% advance payable with the purchase order.",
+      "status": "ok",
+      "reason": null,
+      "source": "regex"
+    },
+    "payment_days_min": {
+      "value": 30.0,
+      "quote": "Payment within 30 days after delivery.",
+      "status": "ok",
+      "reason": null,
+      "source": "regex"
+    },
+    "payment_days_max": {
+      "value": 30.0,
+      "quote": "Payment within 30 days after delivery.",
+      "status": "ok",
+      "reason": null,
+      "source": "regex"
+    },
+    "delivery_value": {
+      "value": 28.0,
+      "quote": "Delivery within 28 days of PO.",
+      "status": "ok",
+      "reason": null,
+      "source": "regex"
+    },
+    "delivery_unit": {
+      "value": "days",
+      "quote": "Delivery within 28 days of PO.",
+      "status": "ok",
+      "reason": null,
+      "source": "regex"
+    },
+    "penalty_clause_present": {
+      "value": true,
+      "quote": "Late delivery penalty of 0.6% of order value per week.",
+      "status": "ok",
+      "reason": null,
+      "source": "regex"
+    },
+    "penalty_pct": {
+      "value": 0.6,
+      "quote": "Late delivery penalty of 0.6% of order value per week.",
+      "status": "ok",
+      "reason": null,
+      "source": "regex"
+    },
+    "penalty_period": {
+      "value": "week",
+      "quote": "Late delivery penalty of 0.6% of order value per week.",
+      "status": "ok",
+      "reason": null,
+      "source": "regex"
+    },
+    "penalty_base": {
+      "value": "order_value",
+      "quote": "Late delivery penalty of 0.6% of order value per week.",
+      "status": "ok",
+      "reason": null,
+      "source": "regex"
+    },
+    "validity_days": {
+      "value": 40.0,
+      "quote": "This quotation is valid for 40 days from the date above.",
+      "status": "ok",
+      "reason": null,
+      "source": "regex"
+    }
+  },
+  "verify_issues": [],
+  "fatal_errors": [],
+  "trace": [
+    {
+      "step": "ingest",
+      "ok": true,
+      "summary": "read 950 characters of text",
+      "ms": 26
+    },
+    {
+      "step": "extract",
+      "ok": true,
+      "summary": "regex extractor: 27/27 fields found",
+      "ms": 0
+    },
+    {
+      "step": "verify",
+      "ok": true,
+      "summary": "27 fields verified against the text",
+      "ms": 1
+    },
+    {
+      "step": "match",
+      "ok": true,
+      "summary": "matched to PR line PR-2026-114/D: quantity +0.00% vs requested; price +2.31% vs maximum",
+      "ms": 0
+    },
+    {
+      "step": "check_rules",
+      "ok": true,
+      "summary": "13 rules checked: 12 pass, 1 fail, 0 could not be verified",
+      "ms": 0
+    },
+    {
+      "step": "decide",
+      "ok": true,
+      "summary": "Needs a person to check - N1: Unit price 6.65 is 2.31% above the maximum 6.5."
+    },
+    {
+      "step": "human_review",
+      "ok": true,
+      "summary": "paused for a person; answer: pending"
+    }
+  ]
+}

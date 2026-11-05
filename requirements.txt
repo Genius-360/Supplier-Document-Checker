@@ -1,0 +1,8 @@
+langgraph>=1.0
+pydantic>=2.5
+pyyaml>=6.0
+pdfplumber>=0.11
+python-dotenv>=1.0
+google-genai>=1.0      # only needed for --extractor llm with a live key
+streamlit>=1.40        # only needed for the demo app
+pytest>=8.0

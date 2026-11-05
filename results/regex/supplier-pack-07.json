@@ -1,0 +1,411 @@
+{
+  "doc_id": "supplier-pack-07",
+  "supplier": "Rupsha Zipper Factory",
+  "item": "B",
+  "system_verdict": "Needs a person to check",
+  "primary_reason": "N2: Quoted quantity 16,500 differs from the requested 20,000 by -17.50% (limit 5%).",
+  "reasons": [
+    {
+      "rule_id": "N2",
+      "status": "fail",
+      "severity": "needs_person",
+      "message": "Quoted quantity 16,500 differs from the requested 20,000 by -17.50% (limit 5%).",
+      "rule": "Quantity differs from the quantity requested by more than 5%.",
+      "evidence": [
+        "B Metal zipper, 18 cm 16,500 piece 35.00 577,500.00",
+        "purchase-request.csv: quantity requested 20,000"
+      ]
+    }
+  ],
+  "human": {
+    "decision": "pending",
+    "reviewer": null,
+    "comment": "no reviewer available in this run"
+  },
+  "final_status": "Waiting for a person",
+  "failed_rules": [
+    "N2"
+  ],
+  "unverified_rules": [],
+  "checks": [
+    {
+      "rule_id": "R1",
+      "status": "pass",
+      "severity": "reject",
+      "message": "Unit price 35 is -7.89% vs the maximum 38.",
+      "evidence": [
+        "B Metal zipper, 18 cm 16,500 piece 35.00 577,500.00",
+        "purchase-request.csv: maximum unit price 38 BDT"
+      ]
+    },
+    {
+      "rule_id": "R2",
+      "status": "pass",
+      "severity": "reject",
+      "message": "Advance payment is 0% (limit 20%).",
+      "evidence": [
+        "No advance payment required."
+      ]
+    },
+    {
+      "rule_id": "R3",
+      "status": "pass",
+      "severity": "reject",
+      "message": "A late-delivery penalty clause is present.",
+      "evidence": [
+        "Late delivery penalty: 0.5% of order value per week."
+      ]
+    },
+    {
+      "rule_id": "R4",
+      "status": "pass",
+      "severity": "reject",
+      "message": "Supplier TIN and BIN are both present.",
+      "evidence": [
+        "TIN: 107458073391",
+        "BIN: 000770741-0101"
+      ]
+    },
+    {
+      "rule_id": "R5",
+      "status": "pass",
+      "severity": "reject",
+      "message": "Delivery is promised in 22 days.",
+      "evidence": [
+        "Delivery within 22 days of PO."
+      ]
+    },
+    {
+      "rule_id": "N1",
+      "status": "pass",
+      "severity": "needs_person",
+      "message": "Unit price 35 is -7.89% vs the maximum 38.",
+      "evidence": [
+        "B Metal zipper, 18 cm 16,500 piece 35.00 577,500.00",
+        "purchase-request.csv: maximum unit price 38 BDT"
+      ]
+    },
+    {
+      "rule_id": "N2",
+      "status": "fail",
+      "severity": "needs_person",
+      "message": "Quoted quantity 16,500 differs from the requested 20,000 by -17.50% (limit 5%).",
+      "evidence": [
+        "B Metal zipper, 18 cm 16,500 piece 35.00 577,500.00",
+        "purchase-request.csv: quantity requested 20,000"
+      ]
+    },
+    {
+      "rule_id": "N3",
+      "status": "pass",
+      "severity": "needs_person",
+      "message": "Payment is due 45 days after delivery (allowed 30 to 60).",
+      "evidence": [
+        "Payment within 45 days of delivery."
+      ]
+    },
+    {
+      "rule_id": "N4",
+      "status": "pass",
+      "severity": "needs_person",
+      "message": "Delivery is promised in 22 days.",
+      "evidence": [
+        "Delivery within 22 days of PO."
+      ]
+    },
+    {
+      "rule_id": "N5",
+      "status": "pass",
+      "severity": "needs_person",
+      "message": "VAT is shown separately at 15%.",
+      "evidence": [
+        "VAT 15% 86,625.00"
+      ]
+    },
+    {
+      "rule_id": "N6",
+      "status": "pass",
+      "severity": "needs_person",
+      "message": "Line amount, subtotal, VAT and total all add up.",
+      "evidence": [
+        "B Metal zipper, 18 cm 16,500 piece 35.00 577,500.00",
+        "Subtotal 577,500.00",
+        "VAT 15% 86,625.00",
+        "Total 664,125.00"
+      ]
+    },
+    {
+      "rule_id": "N7",
+      "status": "pass",
+      "severity": "needs_person",
+      "message": "The quotation is valid for 35 days (minimum 30).",
+      "evidence": [
+        "This quotation is valid for 35 days from the date above."
+      ]
+    },
+    {
+      "rule_id": "P1",
+      "status": "pass",
+      "severity": "needs_person",
+      "message": "Penalty is 0.5% of order value per week (minimum 0.5%).",
+      "evidence": [
+        "Late delivery penalty: 0.5% of order value per week."
+      ]
+    }
+  ],
+  "comparison": {
+    "matched": true,
+    "reason": null,
+    "pr_line": {
+      "pr": "PR-2026-114",
+      "item": "B",
+      "description": "Metal zipper, 18 cm",
+      "unit": "piece",
+      "quantity_requested": "20000",
+      "max_unit_price": "38"
+    },
+    "qty_requested": "20000",
+    "max_price": "38",
+    "qty_quoted": "16500.0",
+    "qty_diff": "-3500.0",
+    "qty_dev_pct": "-17.500",
+    "price_quoted": "35.0",
+    "price_over_max_pct": "-7.894736842105263157894736842",
+    "price_over_max_pct_ex_vat": "-19.90846681922196796338672768"
+  },
+  "facts": {
+    "supplier_name": {
+      "value": "Rupsha Zipper Factory",
+      "quote": "Rupsha Zipper Factory",
+      "status": "ok",
+      "reason": null,
+      "source": "regex"
+    },
+    "quotation_no": {
+      "value": "QT-2026-907",
+      "quote": "Quotation no. QT-2026-907",
+      "status": "ok",
+      "reason": null,
+      "source": "regex"
+    },
+    "quotation_date": {
+      "value": "2026-10-20",
+      "quote": "Date 2026-10-20",
+      "status": "ok",
+      "reason": null,
+      "source": "regex"
+    },
+    "pr_reference": {
+      "value": "PR-2026-114",
+      "quote": "Reference PR-2026-114",
+      "status": "ok",
+      "reason": null,
+      "source": "regex"
+    },
+    "item_code": {
+      "value": "B",
+      "quote": "B Metal zipper, 18 cm 16,500 piece 35.00 577,500.00",
+      "status": "ok",
+      "reason": null,
+      "source": "regex"
+    },
+    "item_description": {
+      "value": "Metal zipper, 18 cm",
+      "quote": "B Metal zipper, 18 cm 16,500 piece 35.00 577,500.00",
+      "status": "ok",
+      "reason": null,
+      "source": "regex"
+    },
+    "quantity": {
+      "value": 16500.0,
+      "quote": "B Metal zipper, 18 cm 16,500 piece 35.00 577,500.00",
+      "status": "ok",
+      "reason": null,
+      "source": "regex"
+    },
+    "unit": {
+      "value": "piece",
+      "quote": "B Metal zipper, 18 cm 16,500 piece 35.00 577,500.00",
+      "status": "ok",
+      "reason": null,
+      "source": "regex"
+    },
+    "unit_price": {
+      "value": 35.0,
+      "quote": "B Metal zipper, 18 cm 16,500 piece 35.00 577,500.00",
+      "status": "ok",
+      "reason": null,
+      "source": "regex"
+    },
+    "line_amount": {
+      "value": 577500.0,
+      "quote": "B Metal zipper, 18 cm 16,500 piece 35.00 577,500.00",
+      "status": "ok",
+      "reason": null,
+      "source": "regex"
+    },
+    "subtotal": {
+      "value": 577500.0,
+      "quote": "Subtotal 577,500.00",
+      "status": "ok",
+      "reason": null,
+      "source": "regex"
+    },
+    "vat_rate_pct": {
+      "value": 15.0,
+      "quote": "VAT 15% 86,625.00",
+      "status": "ok",
+      "reason": null,
+      "source": "regex"
+    },
+    "vat_amount": {
+      "value": 86625.0,
+      "quote": "VAT 15% 86,625.00",
+      "status": "ok",
+      "reason": null,
+      "source": "regex"
+    },
+    "total": {
+      "value": 664125.0,
+      "quote": "Total 664,125.00",
+      "status": "ok",
+      "reason": null,
+      "source": "regex"
+    },
+    "price_includes_vat": {
+      "value": false,
+      "quote": null,
+      "status": "ok",
+      "reason": null,
+      "source": "regex"
+    },
+    "tin": {
+      "value": "107458073391",
+      "quote": "TIN: 107458073391",
+      "status": "ok",
+      "reason": null,
+      "source": "regex"
+    },
+    "bin": {
+      "value": "000770741-0101",
+      "quote": "BIN: 000770741-0101",
+      "status": "ok",
+      "reason": null,
+      "source": "regex"
+    },
+    "advance_pct": {
+      "value": 0.0,
+      "quote": "No advance payment required.",
+      "status": "ok",
+      "reason": null,
+      "source": "regex"
+    },
+    "payment_days_min": {
+      "value": 45.0,
+      "quote": "Payment within 45 days of delivery.",
+      "status": "ok",
+      "reason": null,
+      "source": "regex"
+    },
+    "payment_days_max": {
+      "value": 45.0,
+      "quote": "Payment within 45 days of delivery.",
+      "status": "ok",
+      "reason": null,
+      "source": "regex"
+    },
+    "delivery_value": {
+      "value": 22.0,
+      "quote": "Delivery within 22 days of PO.",
+      "status": "ok",
+      "reason": null,
+      "source": "regex"
+    },
+    "delivery_unit": {
+      "value": "days",
+      "quote": "Delivery within 22 days of PO.",
+      "status": "ok",
+      "reason": null,
+      "source": "regex"
+    },
+    "penalty_clause_present": {
+      "value": true,
+      "quote": "Late delivery penalty: 0.5% of order value per week.",
+      "status": "ok",
+      "reason": null,
+      "source": "regex"
+    },
+    "penalty_pct": {
+      "value": 0.5,
+      "quote": "Late delivery penalty: 0.5% of order value per week.",
+      "status": "ok",
+      "reason": null,
+      "source": "regex"
+    },
+    "penalty_period": {
+      "value": "week",
+      "quote": "Late delivery penalty: 0.5% of order value per week.",
+      "status": "ok",
+      "reason": null,
+      "source": "regex"
+    },
+    "penalty_base": {
+      "value": "order_value",
+      "quote": "Late delivery penalty: 0.5% of order value per week.",
+      "status": "ok",
+      "reason": null,
+      "source": "regex"
+    },
+    "validity_days": {
+      "value": 35.0,
+      "quote": "This quotation is valid for 35 days from the date above.",
+      "status": "ok",
+      "reason": null,
+      "source": "regex"
+    }
+  },
+  "verify_issues": [],
+  "fatal_errors": [],
+  "trace": [
+    {
+      "step": "ingest",
+      "ok": true,
+      "summary": "read 919 characters of text",
+      "ms": 29
+    },
+    {
+      "step": "extract",
+      "ok": true,
+      "summary": "regex extractor: 27/27 fields found",
+      "ms": 0
+    },
+    {
+      "step": "verify",
+      "ok": true,
+      "summary": "27 fields verified against the text",
+      "ms": 1
+    },
+    {
+      "step": "match",
+      "ok": true,
+      "summary": "matched to PR line PR-2026-114/B: quantity -17.50% vs requested; price -7.89% vs maximum",
+      "ms": 0
+    },
+    {
+      "step": "check_rules",
+      "ok": true,
+      "summary": "13 rules checked: 12 pass, 1 fail, 0 could not be verified",
+      "ms": 0
+    },
+    {
+      "step": "decide",
+      "ok": true,
+      "summary": "Needs a person to check - N2: Quoted quantity 16,500 differs from the requested 20,000 by -17.50% (limit 5%)."
+    },
+    {
+      "step": "human_review",
+      "ok": true,
+      "summary": "paused for a person; answer: pending"
+    }
+  ]
+}

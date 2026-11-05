@@ -1,0 +1,388 @@
+{
+  "doc_id": "supplier-pack-01",
+  "supplier": "Padma Textile Mills Ltd",
+  "item": "A",
+  "system_verdict": "Approve",
+  "primary_reason": "All 13 checks passed (R1, R2, R3, R4, R5, N1, N2, N3, N4, N5, N6, N7, P1).",
+  "reasons": [],
+  "human": null,
+  "final_status": "Approved automatically",
+  "failed_rules": [],
+  "unverified_rules": [],
+  "checks": [
+    {
+      "rule_id": "R1",
+      "status": "pass",
+      "severity": "reject",
+      "message": "Unit price 472 is -1.67% vs the maximum 480.",
+      "evidence": [
+        "A Cotton twill fabric, 280 gsm 12,000 metre 472.00 5,664,000.00",
+        "purchase-request.csv: maximum unit price 480 BDT"
+      ]
+    },
+    {
+      "rule_id": "R2",
+      "status": "pass",
+      "severity": "reject",
+      "message": "Advance payment is 10% (limit 20%).",
+      "evidence": [
+        "10% advance payable with the purchase order."
+      ]
+    },
+    {
+      "rule_id": "R3",
+      "status": "pass",
+      "severity": "reject",
+      "message": "A late-delivery penalty clause is present.",
+      "evidence": [
+        "Late delivery penalty: 1% of order value for each full week of delay."
+      ]
+    },
+    {
+      "rule_id": "R4",
+      "status": "pass",
+      "severity": "reject",
+      "message": "Supplier TIN and BIN are both present.",
+      "evidence": [
+        "TIN: 101458013391",
+        "BIN: 000170141-0101"
+      ]
+    },
+    {
+      "rule_id": "R5",
+      "status": "pass",
+      "severity": "reject",
+      "message": "Delivery is promised in 24 days.",
+      "evidence": [
+        "Delivery within 24 days of receiving the purchase order."
+      ]
+    },
+    {
+      "rule_id": "N1",
+      "status": "pass",
+      "severity": "needs_person",
+      "message": "Unit price 472 is -1.67% vs the maximum 480.",
+      "evidence": [
+        "A Cotton twill fabric, 280 gsm 12,000 metre 472.00 5,664,000.00",
+        "purchase-request.csv: maximum unit price 480 BDT"
+      ]
+    },
+    {
+      "rule_id": "N2",
+      "status": "pass",
+      "severity": "needs_person",
+      "message": "Quoted quantity 12,000 vs requested 12,000 (+0.00%).",
+      "evidence": [
+        "A Cotton twill fabric, 280 gsm 12,000 metre 472.00 5,664,000.00",
+        "purchase-request.csv: quantity requested 12,000"
+      ]
+    },
+    {
+      "rule_id": "N3",
+      "status": "pass",
+      "severity": "needs_person",
+      "message": "Payment is due 45 days after delivery (allowed 30 to 60).",
+      "evidence": [
+        "Balance payable within 45 days after delivery and acceptance of goods."
+      ]
+    },
+    {
+      "rule_id": "N4",
+      "status": "pass",
+      "severity": "needs_person",
+      "message": "Delivery is promised in 24 days.",
+      "evidence": [
+        "Delivery within 24 days of receiving the purchase order."
+      ]
+    },
+    {
+      "rule_id": "N5",
+      "status": "pass",
+      "severity": "needs_person",
+      "message": "VAT is shown separately at 15%.",
+      "evidence": [
+        "VAT 15% 849,600.00"
+      ]
+    },
+    {
+      "rule_id": "N6",
+      "status": "pass",
+      "severity": "needs_person",
+      "message": "Line amount, subtotal, VAT and total all add up.",
+      "evidence": [
+        "A Cotton twill fabric, 280 gsm 12,000 metre 472.00 5,664,000.00",
+        "Subtotal 5,664,000.00",
+        "VAT 15% 849,600.00",
+        "Total 6,513,600.00"
+      ]
+    },
+    {
+      "rule_id": "N7",
+      "status": "pass",
+      "severity": "needs_person",
+      "message": "The quotation is valid for 45 days (minimum 30).",
+      "evidence": [
+        "This quotation is valid for 45 days from the date above."
+      ]
+    },
+    {
+      "rule_id": "P1",
+      "status": "pass",
+      "severity": "needs_person",
+      "message": "Penalty is 1% of order value per week (minimum 0.5%).",
+      "evidence": [
+        "Late delivery penalty: 1% of order value for each full week of delay."
+      ]
+    }
+  ],
+  "comparison": {
+    "matched": true,
+    "reason": null,
+    "pr_line": {
+      "pr": "PR-2026-114",
+      "item": "A",
+      "description": "Cotton twill fabric, 280 gsm",
+      "unit": "metre",
+      "quantity_requested": "12000",
+      "max_unit_price": "480"
+    },
+    "qty_requested": "12000",
+    "max_price": "480",
+    "qty_quoted": "12000.0",
+    "qty_diff": "0.0",
+    "qty_dev_pct": "0.0",
+    "price_quoted": "472.0",
+    "price_over_max_pct": "-1.666666666666666666666666667",
+    "price_over_max_pct_ex_vat": "-14.49275362318840579710144927"
+  },
+  "facts": {
+    "supplier_name": {
+      "value": "Padma Textile Mills Ltd",
+      "quote": "Padma Textile Mills Ltd",
+      "status": "ok",
+      "reason": null,
+      "source": "regex"
+    },
+    "quotation_no": {
+      "value": "QT-2026-901",
+      "quote": "Quotation no. QT-2026-901",
+      "status": "ok",
+      "reason": null,
+      "source": "regex"
+    },
+    "quotation_date": {
+      "value": "2026-10-21",
+      "quote": "Date 2026-10-21",
+      "status": "ok",
+      "reason": null,
+      "source": "regex"
+    },
+    "pr_reference": {
+      "value": "PR-2026-114",
+      "quote": "Reference PR-2026-114",
+      "status": "ok",
+      "reason": null,
+      "source": "regex"
+    },
+    "item_code": {
+      "value": "A",
+      "quote": "A Cotton twill fabric, 280 gsm 12,000 metre 472.00 5,664,000.00",
+      "status": "ok",
+      "reason": null,
+      "source": "regex"
+    },
+    "item_description": {
+      "value": "Cotton twill fabric, 280 gsm",
+      "quote": "A Cotton twill fabric, 280 gsm 12,000 metre 472.00 5,664,000.00",
+      "status": "ok",
+      "reason": null,
+      "source": "regex"
+    },
+    "quantity": {
+      "value": 12000.0,
+      "quote": "A Cotton twill fabric, 280 gsm 12,000 metre 472.00 5,664,000.00",
+      "status": "ok",
+      "reason": null,
+      "source": "regex"
+    },
+    "unit": {
+      "value": "metre",
+      "quote": "A Cotton twill fabric, 280 gsm 12,000 metre 472.00 5,664,000.00",
+      "status": "ok",
+      "reason": null,
+      "source": "regex"
+    },
+    "unit_price": {
+      "value": 472.0,
+      "quote": "A Cotton twill fabric, 280 gsm 12,000 metre 472.00 5,664,000.00",
+      "status": "ok",
+      "reason": null,
+      "source": "regex"
+    },
+    "line_amount": {
+      "value": 5664000.0,
+      "quote": "A Cotton twill fabric, 280 gsm 12,000 metre 472.00 5,664,000.00",
+      "status": "ok",
+      "reason": null,
+      "source": "regex"
+    },
+    "subtotal": {
+      "value": 5664000.0,
+      "quote": "Subtotal 5,664,000.00",
+      "status": "ok",
+      "reason": null,
+      "source": "regex"
+    },
+    "vat_rate_pct": {
+      "value": 15.0,
+      "quote": "VAT 15% 849,600.00",
+      "status": "ok",
+      "reason": null,
+      "source": "regex"
+    },
+    "vat_amount": {
+      "value": 849600.0,
+      "quote": "VAT 15% 849,600.00",
+      "status": "ok",
+      "reason": null,
+      "source": "regex"
+    },
+    "total": {
+      "value": 6513600.0,
+      "quote": "Total 6,513,600.00",
+      "status": "ok",
+      "reason": null,
+      "source": "regex"
+    },
+    "price_includes_vat": {
+      "value": false,
+      "quote": null,
+      "status": "ok",
+      "reason": null,
+      "source": "regex"
+    },
+    "tin": {
+      "value": "101458013391",
+      "quote": "TIN: 101458013391",
+      "status": "ok",
+      "reason": null,
+      "source": "regex"
+    },
+    "bin": {
+      "value": "000170141-0101",
+      "quote": "BIN: 000170141-0101",
+      "status": "ok",
+      "reason": null,
+      "source": "regex"
+    },
+    "advance_pct": {
+      "value": 10.0,
+      "quote": "10% advance payable with the purchase order.",
+      "status": "ok",
+      "reason": null,
+      "source": "regex"
+    },
+    "payment_days_min": {
+      "value": 45.0,
+      "quote": "Balance payable within 45 days after delivery and acceptance of goods.",
+      "status": "ok",
+      "reason": null,
+      "source": "regex"
+    },
+    "payment_days_max": {
+      "value": 45.0,
+      "quote": "Balance payable within 45 days after delivery and acceptance of goods.",
+      "status": "ok",
+      "reason": null,
+      "source": "regex"
+    },
+    "delivery_value": {
+      "value": 24.0,
+      "quote": "Delivery within 24 days of receiving the purchase order.",
+      "status": "ok",
+      "reason": null,
+      "source": "regex"
+    },
+    "delivery_unit": {
+      "value": "days",
+      "quote": "Delivery within 24 days of receiving the purchase order.",
+      "status": "ok",
+      "reason": null,
+      "source": "regex"
+    },
+    "penalty_clause_present": {
+      "value": true,
+      "quote": "Late delivery penalty: 1% of order value for each full week of delay.",
+      "status": "ok",
+      "reason": null,
+      "source": "regex"
+    },
+    "penalty_pct": {
+      "value": 1.0,
+      "quote": "Late delivery penalty: 1% of order value for each full week of delay.",
+      "status": "ok",
+      "reason": null,
+      "source": "regex"
+    },
+    "penalty_period": {
+      "value": "week",
+      "quote": "Late delivery penalty: 1% of order value for each full week of delay.",
+      "status": "ok",
+      "reason": null,
+      "source": "regex"
+    },
+    "penalty_base": {
+      "value": "order_value",
+      "quote": "Late delivery penalty: 1% of order value for each full week of delay.",
+      "status": "ok",
+      "reason": null,
+      "source": "regex"
+    },
+    "validity_days": {
+      "value": 45.0,
+      "quote": "This quotation is valid for 45 days from the date above.",
+      "status": "ok",
+      "reason": null,
+      "source": "regex"
+    }
+  },
+  "verify_issues": [],
+  "fatal_errors": [],
+  "trace": [
+    {
+      "step": "ingest",
+      "ok": true,
+      "summary": "read 1034 characters of text",
+      "ms": 115
+    },
+    {
+      "step": "extract",
+      "ok": true,
+      "summary": "regex extractor: 27/27 fields found",
+      "ms": 2
+    },
+    {
+      "step": "verify",
+      "ok": true,
+      "summary": "27 fields verified against the text",
+      "ms": 1
+    },
+    {
+      "step": "match",
+      "ok": true,
+      "summary": "matched to PR line PR-2026-114/A: quantity +0.00% vs requested; price -1.67% vs maximum",
+      "ms": 0
+    },
+    {
+      "step": "check_rules",
+      "ok": true,
+      "summary": "13 rules checked: 13 pass, 0 fail, 0 could not be verified",
+      "ms": 0
+    },
+    {
+      "step": "decide",
+      "ok": true,
+      "summary": "Approve - All 13 checks passed (R1, R2, R3, R4, R5, N1, N2, N3, N4, N5, N6, N7, P1)."
+    }
+  ]
+}

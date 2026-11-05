@@ -1,0 +1,82 @@
+# Aamar Garments Ltd - supplier document rules, written as DATA.
+# Change a number, flip `enabled`, or move a rule between `reject` and `needs_person`,
+# and the pipeline's behaviour changes. No code edits needed.
+#
+#   severity: reject        -> a failed rule rejects the document
+#   severity: needs_person  -> a failed (or unverifiable) rule sends it to a person
+# Reject always wins over needs_person. If nothing fails and nothing is unknown -> Approve.
+
+settings:
+  vat_rate_pct: 15          # used when a unit price turns out to include VAT
+
+rules:
+  # ---- Reject (any one) ---------------------------------------------------------------
+  - id: R1
+    check: price_over_max
+    severity: reject
+    params: {over_pct_gt: 3.0}
+    text: "Unit price is more than 3% above the maximum unit price in the purchase request."
+  - id: R2
+    check: advance_over
+    severity: reject
+    params: {max_pct: 20}
+    text: "Advance payment is more than 20%."
+  - id: R3
+    check: penalty_clause_missing
+    severity: reject
+    text: "The contract has no late-delivery penalty clause."
+  - id: R4
+    check: tin_bin_missing
+    severity: reject
+    text: "The supplier's TIN or BIN is missing."
+  - id: R5
+    check: delivery_days
+    severity: reject
+    params: {over_days_gt: 45}
+    text: "Delivery is promised later than 45 days after the purchase order."
+
+  # ---- Needs a person to check (any one, if no reject rule applies) -------------------
+  - id: N1
+    check: price_over_max
+    severity: needs_person
+    params: {over_pct_gt: 0, over_pct_lte: 3.0}
+    text: "Unit price is above the maximum, but by no more than 3%."
+  - id: N2
+    check: quantity_deviation
+    severity: needs_person
+    params: {max_pct: 5}
+    text: "Quantity differs from the quantity requested by more than 5%."
+  - id: N3
+    check: payment_terms
+    severity: needs_person
+    params: {min_days: 30, max_days: 60}
+    text: "Payment terms are unclear, or outside 30 to 60 days after delivery."
+  - id: N4
+    check: delivery_days
+    severity: needs_person
+    params: {over_days_gt: 30, over_days_lte: 45}
+    text: "Delivery is promised in 31 to 45 days."
+  - id: N5
+    check: vat_shown_separately
+    severity: needs_person
+    params: {rate_pct: 15}
+    text: "VAT is not shown separately at 15%."
+  - id: N6
+    check: arithmetic
+    severity: needs_person
+    params: {tolerance_bdt: 0.01}
+    text: "The numbers do not add up (line total, subtotal, VAT or total is wrong)."
+  - id: N7
+    check: validity_days
+    severity: needs_person
+    params: {min_days: 30}
+    text: "The quotation is valid for less than 30 days."
+
+  # ---- Other note: the late-delivery penalty must be at least 0.5% of order value per week.
+  # The company rules do not say what happens when it is weaker, so we send it to a person
+  # (an assumption, documented in the README). Also flags penalties we cannot measure.
+  - id: P1
+    check: penalty_strength
+    severity: needs_person
+    params: {min_pct_per_week: 0.5, require_base_stated: true}
+    text: "Late-delivery penalty must be at least 0.5% of order value per week."

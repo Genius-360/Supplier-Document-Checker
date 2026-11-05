@@ -1,0 +1,13 @@
+{
+  "_note": "Hand-labelled by reading each pack against company-rules.md BEFORE building the system. failed_rules = the rules that should fail.",
+  "supplier-pack-01.pdf": {"verdict": "Approve", "failed_rules": []},
+  "supplier-pack-02.pdf": {"verdict": "Approve", "failed_rules": []},
+  "supplier-pack-03.pdf": {"verdict": "Reject", "failed_rules": ["R1"]},
+  "supplier-pack-04.pdf": {"verdict": "Needs a person to check", "failed_rules": ["N1"]},
+  "supplier-pack-05.pdf": {"verdict": "Reject", "failed_rules": ["R2"]},
+  "supplier-pack-06.pdf": {"verdict": "Reject", "failed_rules": ["R3"]},
+  "supplier-pack-07.pdf": {"verdict": "Needs a person to check", "failed_rules": ["N2"]},
+  "supplier-pack-08.pdf": {"verdict": "Reject", "failed_rules": ["R4"]},
+  "supplier-pack-09.pdf": {"verdict": "Needs a person to check", "failed_rules": ["N3", "N6"]},
+  "supplier-pack-10.pdf": {"verdict": "Reject", "failed_rules": ["N5", "R5"]}
+}
