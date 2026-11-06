@@ -4,18 +4,31 @@
 For every PDF it answers **Approve**, **Reject** or **Needs a person to check**, and quotes the exact text behind
 the answer. Built for the BIAI AI Engineer Round 2 (Task 1, Aamar Garments Ltd).
 
-> ### At a glance
-> 
-> - **Safe by design.** The AI only *copies facts* out of a document. Every judgement is made by plain code reading
->   `rules.yaml`, and every copied fact must be proven against the document text.
-> - **No silent mistakes.** A wrong AI answer can cause, at worst, "Needs a person". Never a silent Approve or a
->   false Reject.
-> - **Easy to run.** Works fully offline with no API key. The Gemini extractor is optional.
-> - **Result.** 10 / 10 on the sample packs with the offline parser, backed by 88 automated tests.
+### At a glance
+
+- **Safe by design.** The AI only *copies facts* out of a document. Every judgement is made by plain code reading
+  `rules.yaml`, and every copied fact must be proven against the document text.
+- **No silent mistakes.** A wrong AI answer can cause, at worst, "Needs a person". Never a silent Approve or a
+  false Reject.
+- **Easy to run.** Works fully offline with no API key. The Gemini extractor is optional.
+- **Result.** 10 / 10 on the sample packs with the offline parser, backed by 94 automated tests.
+
+### Project status
+
+| Capability | Status |
+|---|---|
+| Offline processing (no API key) | Supported |
+| Gemini extraction | Supported, optional (10 / 10 on the samples) |
+| Human review (a real pause and resume) | Supported |
+| Company rules as editable data (`rules.yaml`) | Supported |
+| Quotations in other layouts | Gemini extractor only; the offline parser needs this layout |
+| Scanned PDFs (OCR) | Not supported yet (goes to a person) |
+| Several line items in one quotation | Not supported yet (goes to a person) |
+| Paused reviews that survive a restart | Not yet |
 
 ### Contents
 
-[Results](#results-on-the-10-sample-packs) · [Quick start](#quick-start) · [Using Gemini](#using-the-gemini-extractor-optional) ·
+[Status](#project-status) · [Results](#results-on-the-10-sample-packs) · [Quick start](#quick-start) · [Using Gemini](#using-the-gemini-extractor-optional) ·
 [Demo app](#demo-app) · [How it works](#how-it-works) · [Rules are data](#rules-are-data) ·
 [Decisions where the rules are silent](#decisions-where-the-rules-are-silent) · [Known limits](#known-limits) ·
 [Privacy](#privacy-note) · [AI tools](#how-i-used-ai-tools) · [Project layout](#project-layout) ·
@@ -42,9 +55,9 @@ the answer. Built for the BIAI AI Engineer Round 2 (Task 1, Aamar Garments Ltd).
 matrix is fully on the diagonal (2 Approve, 5 Reject, 3 Needs a person); see `results/regex/summary.md`.
 All ten documents take about a second.
 
-**Gemini extractor (LLM + cross-check):** Verdict correct: 10 of 10. Verdict and exact set of failed rules both correct: 10 of 10.
-(results are written to `results/llm/`).
-
+**Gemini extractor (LLM + cross-check): 10 / 10 verdicts correct, and 10 / 10 with the exact set of failed rules
+correct.** The saved model answers are in `cache/llm/` and the run output is in `results/llm/summary.md`, so you can
+reproduce this offline without a key.
 
 > **Honest caveat.** I built and tuned this on these same ten files, so 10 / 10 shows it handles *these* documents,
 > not that it handles every layout. That is why the test suite changes one thing at a time (exact boundaries, odd
@@ -94,7 +107,7 @@ Results written to results/regex/ (summary.md + one JSON audit record per docume
 Other useful commands:
 
 ```bash
-pytest                                                       # all 88 tests; no network or API key needed
+pytest                                                       # all tests; no network or API key needed
 streamlit run app.py                                         # the demo app (see below)
 python -m supplier_check --file data/samples/supplier-pack-09.pdf --interactive   # really asks you
 python -m supplier_check --extractor regex                   # force the offline parser
@@ -105,9 +118,9 @@ python -m supplier_check --extractor llm                     # Gemini (needs a k
 
 The offline parser needs nothing. To let Gemini read the documents instead (and be cross-checked by the parser):
 
-1. Copy `env.example` to a new file named exactly `.env` (`copy env.example -> .env` on Windows).
+1. Copy `.env.example` to a new file named exactly `.env` (`copy .env.example .env` on Windows).
 2. Open `.env` and put your key after `GEMINI_API_KEY=`: no quotes, no spaces around `=`.
-   Never put your key in `env.example`; that file is committed to GitHub, `.env` is not.
+   Never put your key in `.env.example`; that file is committed to GitHub, `.env` is not.
 3. Run `python -m supplier_check --extractor llm`. Results go to `results/llm/`.
 4. Every model answer is saved in `cache/llm/`. **Commit that folder**: anyone can then reproduce your Gemini run
    offline with no key. Add `--refresh` to ignore the cache.
@@ -124,8 +137,13 @@ streamlit run app.py
 ```
 
 Pick a sample or upload a PDF, watch the steps run, see the exact text behind every decision, and answer the
-"needs a person" pause yourself. A second tab runs all ten samples and shows the score. The sidebar tells you
-whether your Gemini key was found.
+"needs a person" pause yourself.
+
+- **Run all 10 samples** (second tab) checks the ten packs one at a time with the selected extractor and shows the
+  score. With Gemini it makes one call per document and reuses saved answers, and it tells you how many calls were new.
+  Tick *Ask Gemini again* to ignore the saved answers for that run.
+- **Sidebar** shows whether your Gemini key was found. *Saved Gemini answers* lets you clear them (it asks you to
+  confirm first). Clearing deletes `cache/llm/*.json` only; the next Gemini run calls the model again and uses your quota.
 
 **To host it free:** push the repo to GitHub, create an app on [share.streamlit.io](https://share.streamlit.io) with
 main file `app.py`, and choose Python 3.12 under *Advanced settings*. Add `GEMINI_API_KEY` under *Secrets* if you
@@ -135,14 +153,14 @@ want the Gemini extractor; the app works without it.
 
 ```mermaid
 flowchart LR
-    A[PDF] --> B[1. ingest]
-    B --> C["2. extract<br/>LLM or rule-based parser"]
-    C --> D["3. verify<br/>every quote must be in the text"]
-    D --> E["4. match<br/>vs purchase request"]
-    E --> F["5. check rules<br/>from rules.yaml"]
-    F --> G[6. decide]
-    G -->|Approve or Reject| I[8. finalize]
-    G -->|Needs a person| H["7. human review<br/>run pauses here"]
+    A[PDF] --> B[1 ingest]
+    B --> C["2 extract<br/>LLM or rule-based parser"]
+    C --> D["3 verify<br/>every quote must be in the text"]
+    D --> E["4 match<br/>vs purchase request"]
+    E --> F["5 check rules<br/>from rules.yaml"]
+    F --> G[6 decide]
+    G -->|Approve or Reject| I[8 finalize]
+    G -->|Needs a person| H["7 human review<br/>run pauses here"]
     H --> I
     B -. "unreadable file" .-> G
     C -. "extraction failed" .-> G
@@ -240,7 +258,7 @@ test or by the committed results.
 │   ├── fields.py              # Fields we read; drives both the LLM prompt and the checks
 │   ├── graph.py               # The LangGraph pipeline (start here)
 │   └── llm.py                 # Gemini client with retries, backup model and on-disk cache
-├── tests/                     # 88 automated tests (samples, boundaries, mutations, lying model, human pause)
+├── tests/                     # Automated tests (samples, boundaries, mutations, lying model, human pause)
 ├── app.py                     # Streamlit demo app
 ├── rules.yaml                 # Company rules, managed as data
 ├── requirements.txt
