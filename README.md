@@ -28,7 +28,7 @@ the answer. Built for the BIAI AI Engineer Round 2 (Task 1, Aamar Garments Ltd).
 
 ### Contents
 
-[Status](#project-status) · [Results](#results-on-the-10-sample-packs) · [Quick start](#quick-start) · [Using Gemini](#using-the-gemini-extractor-optional) ·
+[Status](#project-status) · [Results](#results-on-the-10-sample-packs) · [Screenshots](#screenshots) · [Quick start](#quick-start) · [Using Gemini](#using-the-gemini-extractor-optional) ·
 [Demo app](#demo-app) · [How it works](#how-it-works) · [Rules are data](#rules-are-data) ·
 [Decisions where the rules are silent](#decisions-where-the-rules-are-silent) · [Known limits](#known-limits) ·
 [Privacy](#privacy-note) · [AI tools](#how-i-used-ai-tools) · [Project layout](#project-layout) ·
@@ -62,6 +62,29 @@ reproduce this offline without a key.
 > **Honest caveat.** I built and tuned this on these same ten files, so 10 / 10 shows it handles *these* documents,
 > not that it handles every layout. That is why the test suite changes one thing at a time (exact boundaries, odd
 > wording, a model that lies) instead of only re-running the samples.
+
+## Screenshots
+
+The demo app (`streamlit run app.py`) shows every decision together with the exact text behind it.
+
+**1. A clean quotation is approved.** Every rule passes, and each line shows the rule and the text it came from.
+
+![Supplier pack 01 approved: all 13 checks passed, with the supporting text for each check](docs/images/01-approve.png)
+
+**2. When it is not sure, it stops and asks a person.** Pack 09 has an unclear payment range and a wrong line
+total. The run pauses until someone decides, and the answer is stored next to the system's verdict, never over it.
+
+![Supplier pack 09 flagged as Needs a person, with the review form asking to approve, reject or leave pending](docs/images/02-needs-a-person.png)
+
+**3. The evidence is always visible.** The "Why" and "What was read" tabs show each fact, whether it was verified
+against the document, and the exact quote it came from.
+
+![The Why and What was read tabs listing extracted facts with their verification status and supporting quotes](docs/images/03-evidence.png)
+
+**4. All ten samples in one click.** The score is shown with how many Gemini calls were new and how many came from
+saved answers.
+
+![Run all 10 samples tab showing 10 out of 10 correct and the per-pack results table](docs/images/04-run-all-10.png)
 
 ## Quick start
 
