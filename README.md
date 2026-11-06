@@ -76,10 +76,13 @@ total. The run pauses until someone decides, and the answer is stored next to th
 
 ![Supplier pack 09 flagged as Needs a person, with the review form asking to approve, reject or leave pending](docs/images/02-needs-a-person.png)
 
-**3. The evidence is always visible.** The "Why" and "What was read" tabs show each fact, whether it was verified
-against the document, and the exact quote it came from.
+**3. The evidence is always visible.** The "Why" and "What was read" tabs show each fact, whether it was verified against the document, and the exact quote it came from.
 
-![The Why and What was read tabs listing extracted facts with their verification status and supporting quotes](docs/images/03-evidence.png)
+![The Why and What was read tabs showing extracted facts and verification status](docs/images/03-evidence.png)
+
+![Additional evidence view showing fact verification and supporting quotes](docs/images/03-evidence1.png)
+
+![Additional evidence view showing extracted facts and document quotes](docs/images/03-evidence2.png)
 
 **4. All ten samples in one click.** The score is shown with how many Gemini calls were new and how many came from
 saved answers.
