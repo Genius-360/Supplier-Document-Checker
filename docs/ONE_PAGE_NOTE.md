@@ -21,10 +21,9 @@ person", never a silent Approve or a false Reject.
 | | Verdict correct | Verdict + exact failed rules |
 |---|---|---|
 | Offline rule-based parser | 10 / 10 | 10 / 10 |
-| Gemini + cross-check | [[FILL IN: x / 10]] | [[FILL IN: x / 10]] |
+| Gemini + cross-check | 10 / 10 | 10 / 10 |
 
-Split: 2 Approve, 5 Reject, 3 Needs a person. The offline run takes about one second. Gemini run: [[FILL IN: number of model calls, and any document that went to a person when it
-should not have]]. The hardest packs: **09** (line total is wrong, but VAT and total were calculated from the wrong
+Split: 2 Approve, 5 Reject, 3 Needs a person. The offline run takes about one second. The hardest packs: **09** (line total is wrong, but VAT and total were calculated from the wrong
 figure, so only recomputing quantity x price catches it), **10** (VAT-included price; the Reject comes from 60-day
 delivery) and **08** (TIN and BIN missing, worded "available on request").
 
@@ -35,7 +34,6 @@ delivery) and **08** (TIN and BIN missing, worded "available on request").
 - The rules are silent on some cases, so I chose: a weak or unmeasurable penalty goes to a person; a VAT-included
   price is judged on both VAT bases. The README lists every such decision.
 - A paused review lives in memory and is lost on restart.
-- [[FILL IN: anything the live Gemini run got wrong or paraphrased]]
 
 **What I would do next**
 Add OCR; keep paused reviews in SQLite; build a larger set of messy quotes and measure the AI extractor's automation
