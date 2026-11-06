@@ -12,8 +12,9 @@ from pathlib import Path
 import streamlit as st
 from langgraph.types import Command
 
-from supplier_check.config import ROOT, load_config
+from supplier_check.config import ROOT, default_cache_dir, load_config
 from supplier_check.graph import STEPS, build_graph, run_document
+from supplier_check.llm import clear_cache
 from supplier_check.schemas import APPROVE, NEEDS_PERSON, REJECT
 
 st.set_page_config(page_title="Supplier document checker", layout="wide")
@@ -36,12 +37,36 @@ cfg, app = get_app(mode)
 st.sidebar.write(f"Running with: **{cfg.extractor}**")
 _key = bool(os.getenv("GEMINI_API_KEY"))
 _env = (ROOT / ".env").exists()
-_cached = len(list(Path(getattr(cfg.llm, "dir", ROOT / "cache" / "llm")).glob("*.json"))) if cfg.llm else 0
+CACHE_DIR = default_cache_dir()
+_cached = len(list(CACHE_DIR.glob("*.json"))) if CACHE_DIR.is_dir() else 0
 st.sidebar.caption(f"Gemini key: {'found' if _key else 'NOT found'}  \n.env file: {'found' if _env else 'not found'}"
-                   + (f"  \ncached model answers: {_cached}" if cfg.llm else ""))
+                   f"  \nsaved Gemini answers: {_cached}")
 if cfg.extractor == "llm" and not _key:
-    st.sidebar.warning("No Gemini key found, so only cached answers can be used. Create a .env file next to app.py "
+    st.sidebar.warning("No Gemini key found, so only saved answers can be used. Create a .env file next to app.py "
                        "with GEMINI_API_KEY=your-key, then restart Streamlit.")
+
+with st.sidebar.expander("Saved Gemini answers"):
+    st.caption(f"{_cached} saved in `{CACHE_DIR}`. They make reruns instant and let anyone reproduce a Gemini run "
+               "offline.")
+    done = st.session_state.pop("cache_cleared_msg", None)
+    if done:
+        st.success(done)
+    if st.session_state.get("confirm_clear"):
+        st.warning(f"Delete all {_cached} saved answers? The next Gemini run will call the model again and use your "
+                   "quota." + ("" if _key else " **No key found, so you could not regenerate them.**"))
+        yes, no = st.columns(2)
+        if yes.button("Yes, delete", key="clear_yes", type="primary"):
+            n = clear_cache(CACHE_DIR)
+            for k in ("out", "thread", "confirm_clear"):
+                st.session_state.pop(k, None)
+            st.session_state["cache_cleared_msg"] = f"Deleted {n} saved answers."
+            st.rerun()
+        if no.button("Cancel", key="clear_no"):
+            st.session_state.pop("confirm_clear", None)
+            st.rerun()
+    elif st.button("Clear saved Gemini answers", key="clear_cache", disabled=_cached == 0):
+        st.session_state["confirm_clear"] = True
+        st.rerun()
 st.sidebar.markdown("**Pipeline**  \n" + "  \n".join(f"{i}. {s}" for i, s in enumerate(STEPS, 1)))
 
 ICON = {"pass": "PASS", "fail": "FAIL", "unknown": "UNVERIFIED"}
@@ -130,14 +155,35 @@ with tab_one:
             details(rec["reasons"], rec["checks"], rec["facts"], rec["comparison"], rec["trace"])
 
 with tab_all:
+    st.write(f"Checks all {len(SAMPLES)} sample packs, **one at a time**, with the **{cfg.extractor}** extractor"
+             + (" (one Gemini call per document; saved answers are reused)." if cfg.llm else "."))
+    ask_again = False
+    if cfg.llm is not None:
+        ask_again = st.checkbox("Ask Gemini again (ignore saved answers)", key="refresh_all",
+                                help="Calls the model for every document and overwrites its saved answer. "
+                                     "A failed call never deletes an existing saved answer.")
     if st.button("Run all 10 samples", key="run_all"):
+        before = (cfg.llm.calls, cfg.llm.hits) if cfg.llm else (0, 0)
+        if cfg.llm:
+            cfg.llm.refresh = ask_again
+        bar = st.progress(0.0, text="Starting...")
         rows, right = [], 0
-        for p in SAMPLES:
-            rec = run_document(app, doc_id=p.stem, pdf_path=str(p))
-            exp = TRUTH[p.name]
-            ok = rec["system_verdict"] == exp["verdict"] and rec["failed_rules"] == sorted(exp["failed_rules"])
-            right += ok
-            rows.append({"pack": p.stem, "item": rec["item"], "verdict": rec["system_verdict"],
-                         "expected": exp["verdict"], "correct": "yes" if ok else "NO", "why": rec["primary_reason"]})
-        st.metric("Correct (verdict and rules)", f"{right} / {len(SAMPLES)}")
+        try:
+            for i, p in enumerate(SAMPLES, 1):
+                bar.progress((i - 1) / len(SAMPLES), text=f"Checking {p.stem} ({i} of {len(SAMPLES)})")
+                rec = run_document(app, doc_id=p.stem, pdf_path=str(p))
+                exp = TRUTH[p.name]
+                ok = rec["system_verdict"] == exp["verdict"] and rec["failed_rules"] == sorted(exp["failed_rules"])
+                right += ok
+                rows.append({"pack": p.stem, "item": rec["item"], "verdict": rec["system_verdict"],
+                             "expected": exp["verdict"], "correct": "yes" if ok else "NO", "why": rec["primary_reason"]})
+        finally:
+            if cfg.llm:
+                cfg.llm.refresh = False
+        bar.progress(1.0, text="Done")
+        c1, c2, c3 = st.columns(3)
+        c1.metric("Correct (verdict and rules)", f"{right} / {len(SAMPLES)}")
+        c2.metric("Extractor", cfg.extractor)
+        if cfg.llm:
+            c3.metric("Gemini calls / from saved answers", f"{cfg.llm.calls - before[0]} / {cfg.llm.hits - before[1]}")
         st.dataframe(rows, hide_index=True, width="stretch")
