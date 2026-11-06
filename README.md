@@ -144,7 +144,7 @@ python -m supplier_check --extractor llm                     # Gemini (needs a k
 
 The offline parser needs nothing. To let Gemini read the documents instead (and be cross-checked by the parser):
 
-1. Copy `.env.example` to a new file named exactly `.env` (`copy .env.example .env` on Windows).
+1. Copy `.env.example` to a new file named exactly `.env` (`copy .env.example ---> .env` on Windows).
 2. Open `.env` and put your key after `GEMINI_API_KEY=`: no quotes, no spaces around `=`.
    Never put your key in `.env.example`; that file is committed to GitHub, `.env` is not.
 3. Run `python -m supplier_check --extractor llm`. Results go to `results/llm/`.
@@ -179,14 +179,14 @@ want the Gemini extractor; the app works without it.
 
 ```mermaid
 flowchart LR
-    A[PDF] --> B[1 ingest]
-    B --> C["2 extract<br/>LLM or rule-based parser"]
-    C --> D["3 verify<br/>every quote must be in the text"]
-    D --> E["4 match<br/>vs purchase request"]
-    E --> F["5 check rules<br/>from rules.yaml"]
-    F --> G[6 decide]
-    G -->|Approve or Reject| I[8 finalize]
-    G -->|Needs a person| H["7 human review<br/>run pauses here"]
+    A[PDF] --> B[1. ingest]
+    B --> C["2. extract<br/>LLM or rule-based parser"]
+    C --> D["3. verify<br/>every quote must be in the text"]
+    D --> E["4. match<br/>vs purchase request"]
+    E --> F["5. check rules<br/>from rules.yaml"]
+    F --> G[6. decide]
+    G -->|Approve or Reject| I[8. finalize]
+    G -->|Needs a person| H["7. human review<br/>run pauses here"]
     H --> I
     B -. "unreadable file" .-> G
     C -. "extraction failed" .-> G
